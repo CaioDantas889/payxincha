@@ -1,0 +1,34 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1791996668937,
+      "tag": "0000_large_bill_hollister",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1792016206831,
+      "tag": "0001_amusing_zuras",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1792085972219,
+      "tag": "0002_safe_stingray",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1792087337302,
+      "tag": "0003_acoustic_thundra",
+      "breakpoints": true
+    }
+  ]
+}
