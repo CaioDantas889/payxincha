@@ -3,7 +3,10 @@
 Landing de vendas em português com cadastro de CPF/CNPJ, acompanhamento individual e painel administrativo. Implementada em React/Vinext, hospedada em Sites, com banco D1.
 
 ## Conteúdo e operação
-- `app/landing.tsx` e `public/sales.css`: campanha 99% OFF, imagens, taxas sob consulta e WhatsApp.
+- `app/landing.tsx` e `public/sales.css`: campanha 90% OFF, preço de R$ 99,00 por R$ 9,90 à vista, taxas, bandeiras e botões de compra. Sem formulário na landing.
+- `/checkout`: resumo do pedido e cadastro separado em três etapas. Envia ao mesmo banco e painel. Não processa pagamentos; contratação e frete são confirmados após análise.
+- `lib/sales-content.ts`: preços confirmados e depoimentos autorizados. A lista de depoimentos está vazia até o responsável fornecer relatos reais; a seção não aparece enquanto estiver vazia.
+- `components/product-motion.tsx`: animação leve do produto em CSS, com pausa e respeito a movimento reduzido; sem arquivo GIF pesado.
 - `components/customer-registration.tsx`: cadastro em três etapas, com os campos solicitados pelo cliente.
 - `/admin`: acesso por e-mail e senha própria do painel, independente do ChatGPT e da senha do Gmail. A conta principal é caioalves0807@gmail.com. Lista, busca, filtros, detalhes, resposta pública, notas internas, exclusão e decisões Apto / Não apto / Em análise.
 - `/acompanhar`: consulta por chave aleatória no fragmento do link. Mostra somente protocolo, status e resposta. Não expõe dados pessoais nem notas internas.
@@ -15,7 +18,7 @@ O cadastro vai ao banco de dados. Não há API do WhatsApp, disparo de mensagem,
 Dados pessoais não são gravados no armazenamento do navegador. A chave de acompanhamento fica em memória durante o envio e é devolvida ao usuário no link. Reenvios com a mesma chave são idempotentes. Guarde o link após o cadastro.
 
 ## Oferta
-99% de desconto informado pelo cliente. Preço de referência, preço final e prazo de envio não foram fornecidos; prazo por CEP sob consulta. Taxas de cartão transcritas da imagem P4.jpeg (Tabela Newblack — Máquina), com recebimento em 1 dia, antecipação de 1,58% a.m. no parcelamento e crédito 1x sem antecipação. O custo Pix de 0,79% na fonte não é apresentado como taxa ao cliente, pois a própria tabela informa que a taxa final ainda não foi definida. Aprovação e condições são confirmadas antes da contratação. Imagens ilustrativas geradas a partir do produto de referência.
+Oferta corrigida e confirmada pelo cliente em 18/10/2026: preço original R$ 99,00, desconto R$ 89,10 (90%), preço final R$ 9,90 à vista. Substitui a campanha anterior de 99%. Frete e prazo por CEP sob consulta. Taxas de cartão transcritas da imagem P4.jpeg (Tabela Newblack — Máquina), com recebimento em 1 dia, antecipação de 1,58% a.m. no parcelamento e crédito 1x sem antecipação. O custo Pix de 0,79% na fonte não é apresentado como taxa ao cliente, pois a própria tabela informa que a taxa final ainda não foi definida. Aprovação e condições são confirmadas antes da contratação. Imagens ilustrativas geradas a partir do produto de referência.
 
 ## Design
 Referência principal da repaginação: https://www.ton.com.br/ — fotografia de comerciante com produto, título de campanha forte, selo de oferta e CTA direto. Identidade própria Payxincha, verde claro e verde escuro, fonte Inter local. Sem copiar taxas, depoimentos ou condições da Ton. Preserva formulário e painel como caminho de conversão.

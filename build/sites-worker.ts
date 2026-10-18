@@ -25,7 +25,7 @@ export default {
     }
     const response = await runWithConnectorBinding(binding, () => handler.fetch(request, env, ctx));
     const path = new URL(request.url).pathname;
-    if (/^\/(admin(?:\/|$)|api\/(?:auth|admins?|audit)(?:\/|$))/.test(path)) {
+    if (/^\/(checkout(?:\/|$)|admin(?:\/|$)|api\/(?:auth|admins?|audit)(?:\/|$))/.test(path)) {
       const secured = new Response(response.body, response);
       secured.headers.set('Cache-Control','no-store, private');
       secured.headers.set('Referrer-Policy','no-referrer');
