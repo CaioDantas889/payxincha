@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 export const metadata: Metadata = {
-  metadataBase: new URL('https://payxincha.paleridge2.chatgpt.site'),
+  metadataBase: new URL('https://paychinxa.com.br'),
   title: 'Payxincha — Maquininha com 90% de desconto',
   description: 'Maquininha Payxincha com 90% de desconto. Débito Visa e Mastercard a 1,12%, crédito à vista a 3,09%. Conheça a oferta e peça sua maquininha. Sujeito à análise.',
   icons: { icon: '/assets/brand-mark.svg' }, referrer: 'same-origin',

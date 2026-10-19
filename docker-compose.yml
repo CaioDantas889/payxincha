@@ -1,0 +1,41 @@
+services:
+  app:
+    build:
+      context: .
+    container_name: payxincha
+    restart: unless-stopped
+    volumes:
+      - payxincha_data:/data
+      - ./.dev.vars:/app/.dev.vars:ro
+    networks:
+      - default
+      - easypanel
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: easypanel
+      traefik.http.middlewares.payxincha-https.redirectscheme.scheme: https
+      traefik.http.middlewares.payxincha-https.redirectscheme.permanent: "true"
+      traefik.http.middlewares.payxincha-www.redirectregex.regex: "^https://www\\.payxincha\\.com\\.br/(.*)"
+      traefik.http.middlewares.payxincha-www.redirectregex.replacement: "https://payxincha.com.br/$${1}"
+      traefik.http.middlewares.payxincha-www.redirectregex.permanent: "true"
+      traefik.http.routers.payxincha-http.entrypoints: http
+      traefik.http.routers.payxincha-http.rule: "Host(`payxincha.com.br`) || Host(`www.payxincha.com.br`)"
+      traefik.http.routers.payxincha-http.middlewares: payxincha-https
+      traefik.http.routers.payxincha.entrypoints: https
+      traefik.http.routers.payxincha.rule: "Host(`payxincha.com.br`)"
+      traefik.http.routers.payxincha.tls: "true"
+      traefik.http.routers.payxincha.tls.certresolver: letsencrypt
+      traefik.http.routers.payxincha-www.entrypoints: https
+      traefik.http.routers.payxincha-www.rule: "Host(`www.payxincha.com.br`)"
+      traefik.http.routers.payxincha-www.middlewares: payxincha-www
+      traefik.http.routers.payxincha-www.tls: "true"
+      traefik.http.routers.payxincha-www.tls.certresolver: letsencrypt
+      traefik.http.services.payxincha.loadbalancer.server.port: "8787"
+
+volumes:
+  payxincha_data:
+    name: payxincha_data
+
+networks:
+  easypanel:
+    external: true

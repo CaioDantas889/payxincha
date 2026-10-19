@@ -52,6 +52,6 @@ O botão **Acompanhar pedido**, no cabeçalho em computador e celular, abre `/ac
 No painel, abra **Analisar → Excluir cadastro**, digite o protocolo e confirme. A exclusão autenticada remove o cadastro e suas análises do banco ativo, em transação, com proteção contra versão desatualizada. O registro mínimo em `deletion_events` mantém somente identificador interno, administrador e data. Não há lixeira; cópias de segurança anteriores precisam seguir a política de retenção. A migração `0002_safe_stingray.sql` cria o registro de exclusões sem modificar cadastros existentes.
 
 ## Hospedagem
-Projeto existente: appgprj_6ace62b019b881918da6fa593079d8eb.
-URL: https://payxincha.paleridge2.chatgpt.site
-Manifesto `.openai/hosting.json`, Worker ESM e D1 `DB`; build e migrações são empacotados pelo fluxo Sites. Nenhum segredo de publicação faz parte do repositório.
+Produção principal: https://paychinxa.com.br, em contêiner próprio na VPS, atrás do Traefik/EasyPanel. O volume nomeado `payxincha_data` preserva o D1 local entre rebuilds e as migrações pendentes são aplicadas ao iniciar. Os segredos do painel ficam em `.dev.vars`, montado somente em execução e ignorado pelo Git.
+
+O projeto Sites original (`appgprj_6ace62b019b881918da6fa593079d8eb`) continua disponível como origem histórica em https://payxincha.paleridge2.chatgpt.site. Seu D1 é independente do banco da VPS; nenhuma cópia de dados entre as duas hospedagens é feita automaticamente.

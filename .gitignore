@@ -55,5 +55,9 @@ next-env.d.ts
 /outputs/
 /work/
 
+# VPS runtime data and credentials
+/.dev.vars
+/.admin-setup-link.txt
+
 *.tsbuildinfo
 qa/
