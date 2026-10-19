@@ -21,10 +21,17 @@ services:
       traefik.http.routers.payxincha-http.entrypoints: http
       traefik.http.routers.payxincha-http.rule: "Host(`payxincha.com.br`) || Host(`www.payxincha.com.br`)"
       traefik.http.routers.payxincha-http.middlewares: payxincha-https
+      traefik.http.routers.payxincha-temp-http.entrypoints: http
+      traefik.http.routers.payxincha-temp-http.rule: "Host(`payxincha.simulapay.online`)"
+      traefik.http.routers.payxincha-temp-http.middlewares: payxincha-https
       traefik.http.routers.payxincha.entrypoints: https
       traefik.http.routers.payxincha.rule: "Host(`payxincha.com.br`)"
       traefik.http.routers.payxincha.tls: "true"
       traefik.http.routers.payxincha.tls.certresolver: letsencrypt
+      traefik.http.routers.payxincha-temp.entrypoints: https
+      traefik.http.routers.payxincha-temp.rule: "Host(`payxincha.simulapay.online`)"
+      traefik.http.routers.payxincha-temp.tls: "true"
+      traefik.http.routers.payxincha-temp.tls.certresolver: letsencrypt
       traefik.http.routers.payxincha-www.entrypoints: https
       traefik.http.routers.payxincha-www.rule: "Host(`www.payxincha.com.br`)"
       traefik.http.routers.payxincha-www.middlewares: payxincha-www
