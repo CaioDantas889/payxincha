@@ -54,6 +54,12 @@ No painel, abra **Analisar → Excluir cadastro**, digite o protocolo e confirme
 ## Hospedagem
 Produção principal: https://paychinxa.com.br, em contêiner próprio na VPS, atrás do Traefik/EasyPanel. O volume nomeado `payxincha_data` preserva o D1 local entre rebuilds e as migrações pendentes são aplicadas ao iniciar. Os segredos do painel ficam em `.dev.vars`, montado somente em execução e ignorado pelo Git.
 
+Configure `PUBLIC_ORIGIN=https://paychinxa.com.br` em `.dev.vars`: o proxy termina o HTTPS e encaminha HTTP ao contêiner; cadastro, acompanhamento e autenticação validam a origem pública configurada. `www.paychinxa.com.br` e o endereço temporário `payxincha.simulapay.online` redirecionam para o domínio principal, preservando o caminho.
+
+Publicação em 20/10/2026: corrigido o domínio nas regras do Traefik (antes estava `payxincha.com.br`), emitidos certificados Let's Encrypt e preservado o volume existente. Backup anterior à alteração em `/opt/backups/payxincha/20261020-domain/`, com banco e configurações privadas. Para atualizar, execute `docker compose build app` e `docker compose up -d --no-build app` em `/opt/payxincha`, após fazer backup. Não remova o volume. Arquivos `.dev.vars*` e links privados de ativação são excluídos também do contexto Docker.
+
+Validação desta publicação: 22 testes automatizados e TypeScript aprovados; build Docker concluído. Pelo HTTPS público, foram verificados as quatro páginas principais, redirecionamentos, bloqueio de outras origens, proteção do painel, cadastro técnico, reenvio idempotente e acompanhamento sem dados pessoais. O cadastro técnico foi removido após o teste. A conta principal aguarda o responsável definir sua senha pelo link privado de ativação; o fluxo autenticado do painel não foi testado com uma conta de produção.
+
 O projeto Sites original (`appgprj_6ace62b019b881918da6fa593079d8eb`) continua disponível como origem histórica em https://payxincha.paleridge2.chatgpt.site. Seu D1 é independente do banco da VPS; nenhuma cópia de dados entre as duas hospedagens é feita automaticamente.
 
 ## Comparação de taxas e feedback

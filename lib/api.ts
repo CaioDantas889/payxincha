@@ -1,9 +1,13 @@
 import { env } from 'cloudflare:workers';
 import { authenticate } from './admin-auth';
 import { AuthError } from './password';
+import { matchesRequestOrigin } from './request-origin';
 export function db() { if (!env.DB) throw new Error('Database unavailable'); return env.DB; }
 export function json(value: unknown, status = 200, extraHeaders: Record<string, string> = {}) { return Response.json(value, { status, headers: { 'Cache-Control': 'no-store, private', 'X-Content-Type-Options': 'nosniff', ...extraHeaders } }); }
-export function sameOrigin(request: Request) { return request.headers.get('Origin') === new URL(request.url).origin && request.headers.get('X-Payxincha-Request') === '1'; }
+export function sameOrigin(request: Request) {
+  const runtime = env as unknown as Record<string, string | undefined>;
+  return matchesRequestOrigin(request, runtime.PUBLIC_ORIGIN);
+}
 export async function readJson(request: Request) {
   if (!request.headers.get('Content-Type')?.toLowerCase().startsWith('application/json')) throw new Error('CONTENT_TYPE');
   const reader = request.body?.getReader(); if (!reader) throw new Error('BODY');

@@ -12,7 +12,8 @@ qa
 work
 tmp_extract_pdfs.py
 .env*
-.dev.vars
-.admin-setup-link.txt
+.dev.vars*
+.admin-setup-link*
+docker-compose.yml.pre-*
 npm-debug.log*
 *.tsbuildinfo
