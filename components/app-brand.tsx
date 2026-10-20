@@ -1,1 +1,1 @@
-export function AppBrand() { return <a className="brand" href="/" aria-label="Payxincha, início"><img src="/assets/brand-mark.svg" alt="" width="36" height="36" /><span>Payxincha<span className="brand-dot">.</span></span></a>; }
+export function AppBrand() { return <a className="brand" href="/" aria-label="Paychinxa, início"><img src="/assets/brand-mark.svg" alt="" width="36" height="36" /><span>Paychinxa<span className="brand-dot">.</span></span></a>; }

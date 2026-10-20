@@ -8,7 +8,7 @@ export const salesOffer = {
 
 export const salesContact = {
   label: '(88) 8223-1738',
-  url: 'https://wa.me/558882231738?text=Ol%C3%A1!%20Quero%20conhecer%20a%20oferta%20da%20Payxincha.',
+  url: 'https://wa.me/558882231738?text=Ol%C3%A1!%20Quero%20conhecer%20a%20oferta%20da%20Paychinxa.',
 };
 
 export type Testimonial = { name: string; business: string; quote: string };

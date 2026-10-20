@@ -2,7 +2,7 @@
 // Basis points: 309 = 3,09%. Prazos e condições comerciais não são equivalentes.
 export const comparisonSource = 'https://pagbank.com.br/para-seu-negocio/maquininhas';
 export const comparisonPlans = [
-  { name: 'Payxincha', debit: 112, credit: 309, installments12: 1225 },
+  { name: 'Paychinxa', debit: 112, credit: 309, installments12: 1225 },
   { name: 'PagBank Super Max', debit: 144, credit: 349, installments12: 1378 },
   { name: 'PagBank Essencial', debit: 239, credit: 499, installments12: 2259 },
 ] as const;

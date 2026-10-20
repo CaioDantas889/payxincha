@@ -34,6 +34,6 @@ export const detailColumns = `${applicationColumns}, cpf, birth_date AS birthDat
 export function safeError(error: unknown) {
   if (error instanceof Error && ['CONTENT_TYPE','BODY','BODY_SIZE'].includes(error.message)) return json({ error: 'Formato de solicitação inválido.' }, 400);
   if (error instanceof SyntaxError) return json({ error: 'Não foi possível ler a solicitação.' }, 400);
-  console.error('Payxincha: falha ao processar a operação.');
+  console.error('Paychinxa: falha ao processar a operação.');
   return json({ error: 'Não foi possível concluir agora. Tente novamente em instantes.' }, 503);
 }

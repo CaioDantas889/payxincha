@@ -1,4 +1,4 @@
-# Payxincha
+# Paychinxa
 
 Landing de vendas em português com cadastro de CPF/CNPJ, acompanhamento individual e painel administrativo. Implementada em React/Vinext, hospedada em Sites, com banco D1.
 
@@ -21,7 +21,7 @@ Dados pessoais não são gravados no armazenamento do navegador. A chave de acom
 Oferta corrigida e confirmada pelo cliente em 18/10/2026: preço original R$ 99,00, desconto R$ 89,10 (90%), preço final R$ 9,90 à vista. Substitui a campanha anterior de 99%. Frete e prazo por CEP sob consulta. Taxas de cartão transcritas da imagem P4.jpeg (Tabela Newblack — Máquina), com recebimento em 1 dia, antecipação de 1,58% a.m. no parcelamento e crédito 1x sem antecipação. O custo Pix de 0,79% na fonte não é apresentado como taxa ao cliente, pois a própria tabela informa que a taxa final ainda não foi definida. Aprovação e condições são confirmadas antes da contratação. Imagens ilustrativas geradas a partir do produto de referência.
 
 ## Design
-Referência principal da repaginação: https://www.ton.com.br/ — fotografia de comerciante com produto, título de campanha forte, selo de oferta e CTA direto. Identidade própria Payxincha, verde claro e verde escuro, fonte Inter local. Sem copiar taxas, depoimentos ou condições da Ton. Preserva formulário e painel como caminho de conversão.
+Referência principal da repaginação: https://www.ton.com.br/ — fotografia de comerciante com produto, título de campanha forte, selo de oferta e CTA direto. Identidade própria Paychinxa, verde claro e verde escuro, fonte Inter local. Sem copiar taxas, depoimentos ou condições da Ton. Preserva formulário e painel como caminho de conversão.
 
 ## Desenvolvimento
 Node >= 22.13.0. Instalação: `npm run install:ci`. Desenvolvimento: `npm run dev`. Build: `npm run build`.
@@ -63,4 +63,4 @@ Validação desta publicação: 22 testes automatizados e TypeScript aprovados; 
 O projeto Sites original (`appgprj_6ace62b019b881918da6fa593079d8eb`) continua disponível como origem histórica em https://payxincha.paleridge2.chatgpt.site. Seu D1 é independente do banco da VPS; nenhuma cópia de dados entre as duas hospedagens é feita automaticamente.
 
 ## Comparação de taxas e feedback
-A seção após a primeira dobra compara a tabela Visa/Mastercard da Payxincha com os planos PagBank Super Max e Essencial após a promoção, consultados em 19/10/2026. Inclui print oficial, fonte, regras promocionais e diferentes prazos de recebimento. O simulador calcula apenas diferenças nas taxas do crédito à vista. Novos valores devem ser conferidos antes de atualizar lib/rate-comparison.ts. Não há depoimentos fictícios.
+A seção após a primeira dobra compara a tabela Visa/Mastercard da Paychinxa com os planos PagBank Super Max e Essencial após a promoção, consultados em 19/10/2026. Inclui print oficial, fonte, regras promocionais e diferentes prazos de recebimento. O simulador calcula apenas diferenças nas taxas do crédito à vista. Novos valores devem ser conferidos antes de atualizar lib/rate-comparison.ts. Não há depoimentos fictícios.
