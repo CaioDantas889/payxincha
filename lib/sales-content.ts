@@ -12,7 +12,7 @@ export const salesContact = {
 };
 
 export type Testimonial = { name: string; business: string; quote: string };
-// Adicionar apenas relatos reais com autorização. Vazio = seção não publicada.
+// Adicionar apenas relatos reais com autorização. Vazio = convite para enviar feedback.
 export const testimonials: Testimonial[] = [];
 
 export function money(cents: number) {

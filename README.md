@@ -5,7 +5,7 @@ Landing de vendas em português com cadastro de CPF/CNPJ, acompanhamento individ
 ## Conteúdo e operação
 - `app/landing.tsx` e `public/sales.css`: campanha 90% OFF, preço de R$ 99,00 por R$ 9,90 à vista, taxas, bandeiras e botões de compra. Sem formulário na landing.
 - `/checkout`: resumo do pedido e cadastro separado em três etapas. Envia ao mesmo banco e painel. Não processa pagamentos; contratação e frete são confirmados após análise.
-- `lib/sales-content.ts`: preços confirmados e depoimentos autorizados. A lista de depoimentos está vazia até o responsável fornecer relatos reais; a seção não aparece enquanto estiver vazia.
+- `lib/sales-content.ts`: preços confirmados e depoimentos autorizados. A lista de depoimentos está vazia até o responsável fornecer relatos reais. Enquanto isso, a seção convida clientes a enviarem feedback pelo WhatsApp; publicação somente com autorização.
 - `components/product-motion.tsx`: animação leve do produto em CSS, com pausa e respeito a movimento reduzido; sem arquivo GIF pesado.
 - `components/customer-registration.tsx`: cadastro em três etapas, com os campos solicitados pelo cliente.
 - `/admin`: acesso por e-mail e senha própria do painel, independente do ChatGPT e da senha do Gmail. A conta principal é caioalves0807@gmail.com. Lista, busca, filtros, detalhes, resposta pública, notas internas, exclusão e decisões Apto / Não apto / Em análise.
@@ -55,3 +55,6 @@ No painel, abra **Analisar → Excluir cadastro**, digite o protocolo e confirme
 Produção principal: https://paychinxa.com.br, em contêiner próprio na VPS, atrás do Traefik/EasyPanel. O volume nomeado `payxincha_data` preserva o D1 local entre rebuilds e as migrações pendentes são aplicadas ao iniciar. Os segredos do painel ficam em `.dev.vars`, montado somente em execução e ignorado pelo Git.
 
 O projeto Sites original (`appgprj_6ace62b019b881918da6fa593079d8eb`) continua disponível como origem histórica em https://payxincha.paleridge2.chatgpt.site. Seu D1 é independente do banco da VPS; nenhuma cópia de dados entre as duas hospedagens é feita automaticamente.
+
+## Comparação de taxas e feedback
+A seção após a primeira dobra compara a tabela Visa/Mastercard da Payxincha com os planos PagBank Super Max e Essencial após a promoção, consultados em 19/10/2026. Inclui print oficial, fonte, regras promocionais e diferentes prazos de recebimento. O simulador calcula apenas diferenças nas taxas do crédito à vista. Novos valores devem ser conferidos antes de atualizar lib/rate-comparison.ts. Não há depoimentos fictícios.
