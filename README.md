@@ -64,3 +64,11 @@ O projeto Sites original (`appgprj_6ace62b019b881918da6fa593079d8eb`) continua d
 
 ## Comparação de taxas e feedback
 A seção após a primeira dobra compara a tabela Visa/Mastercard da Paychinxa com os planos PagBank Super Max e Essencial após a promoção, consultados em 19/10/2026. Inclui print oficial, fonte, regras promocionais e diferentes prazos de recebimento. O simulador calcula apenas diferenças nas taxas do crédito à vista. Novos valores devem ser conferidos antes de atualizar lib/rate-comparison.ts. Não há depoimentos fictícios.
+
+## Atualização pelo Windows
+
+Abra `Atualizar-Paychinxa.bat` no projeto ou `07-DEPLOY-PAYCHINXA.bat` em `Área de Trabalho/Comandos Deploy VPS` e digite `DEPLOY`. O iniciador executa pull com avanço direto na cópia local, checagem TypeScript e testes, depois pull na VPS, backup, build Docker e publicação somente do Paychinxa. Interrompe se houver alterações rastreadas locais, divergência de histórico, outro deploy em andamento ou falha de validação. Arquivos não rastreados não são publicados.
+
+O SSH usa a chave já instalada para `root@72.60.51.248`, sem senhas no BAT. São necessários Git, Node.js >= 22.13, npm e OpenSSH. Backups ficam em `/opt/backups/payxincha/AAAAMMDD-HHMMSS/`: código anterior, configuração privada, volume consistente e checksums. O build acontece antes da breve parada para copiar o banco. O volume `payxincha_data` é mantido, e o processo confere saúde, HTTPS, páginas e proteção das APIs antes de informar sucesso. Em caso de falha, o backup é mantido; restauração de banco exige manutenção explícita.
+
+Para validar apenas a sintaxe remota, sem pull ou deploy: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/deploy-paychinxa.ps1 -ValidateOnly`. A opção `-NoConfirm` permite execução previamente autorizada sem a pergunta interativa. O processo não faz commit ou push de alterações locais.
