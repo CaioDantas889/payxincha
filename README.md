@@ -72,3 +72,10 @@ Abra `Atualizar-Paychinxa.bat` no projeto ou `07-DEPLOY-PAYCHINXA.bat` em `Área
 O SSH usa a chave já instalada para `root@72.60.51.248`, sem senhas no BAT. São necessários Git, Node.js >= 22.13, npm e OpenSSH. Backups ficam em `/opt/backups/payxincha/AAAAMMDD-HHMMSS/`: código anterior, configuração privada, volume consistente e checksums. O build acontece antes da breve parada para copiar o banco. O volume `payxincha_data` é mantido, e o processo confere saúde, HTTPS, páginas e proteção das APIs antes de informar sucesso. Em caso de falha, o backup é mantido; restauração de banco exige manutenção explícita.
 
 Para validar apenas a sintaxe remota, sem pull ou deploy: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/deploy-paychinxa.ps1 -ValidateOnly`. A opção `-NoConfirm` permite execução previamente autorizada sem a pergunta interativa. O processo não faz commit ou push de alterações locais.
+
+## Fluxo atual — checkout Ticto (23/10/2026)
+O site público agora é somente a landing de vendas. Todos os botões Comprar maquininha apontam diretamente para https://payment.ticto.app/OA0F493FD (constante em lib/checkout.ts), na mesma aba. A antiga rota /checkout redireciona com HTTP 307, e links antigos /#cadastro também seguem para a Ticto. Não há repasse automático de dados pessoais nem parâmetros de cadastro no link.
+
+Removidos os acessos ao painel e acompanhamento da navegação da landing. A FAQ, as etapas de compra e o aviso de privacidade refletem o checkout externo. POST /api/solicitacoes retorna 410 sem ler ou gravar dados. Banco, painel autenticado e acompanhamento de registros históricos foram preservados para não perder pedidos antigos; as seções anteriores deste documento sobre cadastro interno descrevem esse legado, não o fluxo comercial atual. Novas compras são feitas na Ticto e não entram nesse painel legado. Não foi criada integração de pedidos ou webhook.
+
+Conferência do destino: R$9,90 à vista. O checkout externo informa preço anterior R$147,00, diferente dos R$99,00 confirmados pelo responsável para a landing. Essa divergência foi comunicada; o preço da landing não foi alterado sem nova confirmação.

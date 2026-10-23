@@ -40,3 +40,5 @@
 .sales-comparison,.sales-feedback{scroll-margin-top:85px}.comparison-proof figcaption>a{display:inline-block;margin-left:8px}.comparison-scroll:focus-visible{outline:3px solid #4b7b32;outline-offset:3px}
 @media(max-width:760px){.sales-comparison,.sales-feedback{scroll-margin-top:95px}.comparison-proof figcaption>a{display:block;margin-left:0}}
 .comparison-swipe-hint{display:none}@media(max-width:760px){.comparison-swipe-hint{display:block;font-size:10px;line-height:1.7;color:#58645c;margin-bottom:10px}}
+
+.purchase-destination{font-size:11px;color:#3e5642;margin-top:13px;line-height:1.6}.sale-hero-copy .purchase-destination+.sale-condition{margin-top:5px}

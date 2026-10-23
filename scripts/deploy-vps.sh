@@ -57,12 +57,23 @@ test "$(docker inspect payxincha --format '{{.State.Health.Status}}')" = healthy
 docker exec -i payxincha node --input-type=module <<'NODE'
 import assert from 'node:assert/strict';
 const origin = 'https://paychinxa.com.br';
-for (const path of ['/', '/checkout', '/acompanhar', '/admin']) {
+for (const path of ['/', '/acompanhar', '/admin']) {
   const response = await fetch(origin + path, { signal: AbortSignal.timeout(20000) });
   assert.equal(response.status, 200, path);
   await response.arrayBuffer();
 }
-for (const path of ['/api/solicitacoes', '/api/solicitacoes/acompanhar', '/api/auth/login']) {
+const checkoutUrl = 'https://payment.ticto.app/OA0F493FD';
+const checkout = await fetch(origin + '/checkout', { redirect: 'manual', signal: AbortSignal.timeout(20000) });
+assert.equal(checkout.status, 307, 'checkout antigo redireciona');
+assert.equal(checkout.headers.get('location'), checkoutUrl, 'destino Ticto');
+const landing = await (await fetch(origin, { signal: AbortSignal.timeout(20000) })).text();
+assert.ok(landing.includes('href="' + checkoutUrl + '"'), 'compra direta na Ticto');
+assert.ok(!/href="\/(checkout|admin|acompanhar)"/.test(landing), 'landing sem fluxo interno');
+assert.ok(!/<input[\s>]/i.test(landing), 'landing sem coleta de dados');
+const retired = await fetch(origin + '/api/solicitacoes', { method: 'POST', body: '{}', signal: AbortSignal.timeout(20000) });
+assert.equal(retired.status, 410, 'cadastro interno encerrado');
+assert.equal((await retired.json()).checkoutUrl, checkoutUrl);
+for (const path of ['/api/solicitacoes/acompanhar', '/api/auth/login']) {
   for (const requestOrigin of [origin, 'https://invalid.example']) {
     const response = await fetch(origin + path, {
       method: 'POST', signal: AbortSignal.timeout(20000),
