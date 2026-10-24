@@ -8,5 +8,5 @@ export const metadata: Metadata = {
   openGraph: { title: 'Paychinxa — Maquininha com 90% de desconto', description: 'Não é pegadinha. Peça sua Paychinxa e consulte as condições.', images: ['/assets/comerciante-paychinxa.png'], locale: 'pt_BR', type: 'website' },
 };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="pt-BR"><head><link rel="stylesheet" href="/styles.css" /><link rel="stylesheet" href="/application.css" /><link rel="stylesheet" href="/sales.css" /><link rel="preload" href="/assets/inter-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" /></head><body>{children}</body></html>;
+  return <html lang="pt-BR"><head><link rel="stylesheet" href="/styles.css" /><link rel="stylesheet" href="/application.css" /><link rel="stylesheet" href="/sales.css" /><link rel="stylesheet" href="/sales-harmony.css" /><link rel="preload" href="/assets/inter-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" /></head><body>{children}</body></html>;
 }
