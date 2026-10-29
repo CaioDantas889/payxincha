@@ -19,3 +19,7 @@ Não importar valores inválidos dos arquivos (`#15191`, `48-80px`) nem depender
 ## Verificação visual
 
 Prévia local conferida no navegador em desktop, 390×844 e 320×740. Sem rolagem horizontal da página; tabela completa abre com 19 linhas e rolagem própria; FAQ e menu móvel funcionam; todos os links de compra apontam à Ticto. Texto da oferta vem antes da imagem no celular. Corrigido o espaço duplicado das âncoras (scroll-padding global + scroll-margin). Referência preservada: alinhamento de 1200px, intervalos 48/80px, cards planos de 12px e hierarquia tipográfica. Identidade verde e assets existentes mantidos.
+
+## Feedbacks — 29/10/2026
+
+Referências de conteúdo: IMG_1477.JPG.jpeg, pay.jpeg e paay.jpeg, fornecidas para publicação. Três cartões planos com relatos transcritos, identificação do negócio e acesso ao print original, sem nota ou selo de verificação inventados. Layout mantém a referência já aprovada: fundo Fog, branco, raio 12, escala de 8, Inter e verde Paychinxa. Seção antes das dúvidas, link Feedbacks no menu e rodapé; uma coluna no celular. Nova ordem: etapas (03), feedbacks (04), dúvidas (05).
