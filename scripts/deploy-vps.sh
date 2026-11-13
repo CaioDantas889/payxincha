@@ -62,14 +62,15 @@ for (const path of ['/', '/acompanhar', '/admin']) {
   assert.equal(response.status, 200, path);
   await response.arrayBuffer();
 }
-const checkoutUrl = 'https://payment.ticto.app/OA0F493FD';
+const checkoutUrl = 'https://pay.cakto.com.br/5wcrmvz_1306011';
 const checkout = await fetch(origin + '/checkout', { redirect: 'manual', signal: AbortSignal.timeout(20000) });
 assert.equal(checkout.status, 307, 'checkout antigo redireciona');
-assert.equal(checkout.headers.get('location'), checkoutUrl, 'destino Ticto');
+assert.equal(checkout.headers.get('location'), checkoutUrl, 'destino Cakto');
 const landing = await (await fetch(origin, { signal: AbortSignal.timeout(20000) })).text();
-assert.ok(landing.includes('href="' + checkoutUrl + '"'), 'compra direta na Ticto');
+assert.ok(landing.includes('checkout-interest-dialog'), 'formulario de interesse presente');
+assert.ok(landing.includes('Seu nome') && landing.includes('Seu telefone com DDD'), 'campos de contato presentes');
+assert.ok(landing.includes('Abrir WhatsApp e continuar'), 'continuidade para WhatsApp e checkout');
 assert.ok(!/href="\/(checkout|admin|acompanhar)"/.test(landing), 'landing sem fluxo interno');
-assert.ok(!/<input[\s>]/i.test(landing), 'landing sem coleta de dados');
 const retired = await fetch(origin + '/api/solicitacoes', { method: 'POST', body: '{}', signal: AbortSignal.timeout(20000) });
 assert.equal(retired.status, 410, 'cadastro interno encerrado');
 assert.equal((await retired.json()).checkoutUrl, checkoutUrl);
