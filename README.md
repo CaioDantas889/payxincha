@@ -21,7 +21,7 @@ Dados pessoais não são gravados no armazenamento do navegador. A chave de acom
 Oferta corrigida e confirmada pelo cliente em 18/10/2026: preço original R$ 99,00, desconto R$ 89,10 (90%), preço final R$ 9,90 à vista. Substitui a campanha anterior de 99%. Frete e prazo por CEP sob consulta. Taxas de cartão transcritas da imagem P4.jpeg (Tabela Newblack — Máquina), com recebimento em 1 dia, antecipação de 1,58% a.m. no parcelamento e crédito 1x sem antecipação. O custo Pix de 0,79% na fonte não é apresentado como taxa ao cliente, pois a própria tabela informa que a taxa final ainda não foi definida. Aprovação e condições são confirmadas antes da contratação. Imagens ilustrativas geradas a partir do produto de referência.
 
 ## Design
-Referência principal da repaginação: https://www.ton.com.br/ — fotografia de comerciante com produto, título de campanha forte, selo de oferta e CTA direto. Identidade própria Paychinxa, verde claro e verde escuro, fonte Inter local. Sem copiar taxas, depoimentos ou condições da Ton. Preserva formulário e painel como caminho de conversão.
+Referência principal da repaginação: https://www.ton.com.br/ — fotografia de comerciante com produto, título de campanha forte, selo de oferta e CTA direto. Identidade própria Paychinxa, verde claro e verde escuro, fonte Inter local. Sem copiar taxas, depoimentos ou condições da Ton. O CTA direciona ao checkout externo; o painel fica disponível para registros históricos.
 
 ## Desenvolvimento
 Node >= 22.13.0. Instalação: `npm run install:ci`. Desenvolvimento: `npm run dev`. Build: `npm run build`.
@@ -74,7 +74,7 @@ O SSH usa a chave já instalada para `root@72.60.51.248`, sem senhas no BAT. Sã
 Para validar apenas a sintaxe remota, sem pull ou deploy: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/deploy-paychinxa.ps1 -ValidateOnly`. A opção `-NoConfirm` permite execução previamente autorizada sem a pergunta interativa. O processo não faz commit ou push de alterações locais.
 
 ## Fluxo atual — checkout Cakto (13/11/2026)
-Os botões Comprar maquininha abrem um formulário com nome e telefone e, ao continuar, seguem diretamente para https://pay.cakto.com.br/5wcrmvz_1306011 (constante em lib/checkout.ts). O formulário serve para liberar a navegação; não envia nem armazena os dados. A pessoa preenche os dados da compra e pagamento no checkout. A antiga rota /checkout redireciona com HTTP 307 para a Cakto; links antigos /#cadastro seguem para a seção da oferta.
+Todos os botões Comprar maquininha levam diretamente a https://pay.cakto.com.br/5wcrmvz_1306011 (constante em lib/checkout.ts), sem formulário intermediário. A pessoa informa os dados da compra e pagamento na Cakto. A antiga rota /checkout redireciona com HTTP 307 para a Cakto; links antigos /#cadastro seguem para a seção da oferta.
 
 Removidos os acessos ao painel e acompanhamento da navegação da landing. A FAQ, as etapas de compra e o aviso de privacidade refletem o checkout externo. POST /api/solicitacoes retorna 410 sem ler ou gravar dados. Banco, painel autenticado e acompanhamento de registros históricos foram preservados para não perder pedidos antigos; as seções anteriores deste documento sobre cadastro interno descrevem esse legado, não o fluxo comercial atual. As compras da Cakto não entram nesse painel legado. Não foi criada integração de pedidos ou webhook.
 
