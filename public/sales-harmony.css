@@ -13,7 +13,6 @@
 .harmony-page h2 { text-wrap: balance; }
 .harmony-page .sale-kicker { font-size: 11px; letter-spacing: .07em; }
 .harmony-page .sale-button { font-weight: 600; border-radius: var(--panel-radius); min-height: 52px; }
-.harmony-page button.sale-button { font: inherit; font-weight: 600; cursor: pointer; }
 .harmony-page a:focus-visible, .harmony-page button:focus-visible, .harmony-page summary:focus-visible { outline: 3px solid #478032; outline-offset: 4px; }
 .harmony-page .sale-hero { background: #f1f9e6; }
 .harmony-page .sale-hero-grid { gap: 48px; padding-block: 48px; }
@@ -215,21 +214,6 @@
 .harmony-page .feedback-dialog-content img { width: auto; max-width: 100%; max-height: 72dvh; height: auto; margin: 0 auto 16px; display: block; object-fit: contain; }
 .harmony-page .feedback-dialog-content a { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
 html:has(.feedback-dialog[open]) { overflow: hidden; }
-.harmony-page .checkout-interest-dialog { position: fixed; inset: 0; margin: auto; width: min(480px, calc(100% - 32px)); max-width: 480px; max-height: min(90dvh, 760px); overflow: auto; padding: 28px; border: 1px solid #e1e6dc; border-radius: 20px; background: #fff; color: #18372a; box-shadow: 0 24px 100px #0006; overscroll-behavior: contain; }
-.harmony-page .checkout-interest-dialog::backdrop { background: #081b14d9; backdrop-filter: blur(5px); }
-.harmony-page .checkout-interest-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
-.harmony-page .checkout-interest-mark { display: grid; width: 40px; height: 40px; place-items: center; border-radius: 12px; background: #edf5e3; color: #347629; font-size: 20px; font-weight: 750; }
-.harmony-page .checkout-interest-header button { display: grid; width: 44px; height: 44px; place-items: center; border: 0; border-radius: 50%; background: #f2f4f0; color: #18372a; font: inherit; font-size: 26px; cursor: pointer; }
-.harmony-page .checkout-interest-dialog > .sale-kicker { margin: 0 0 10px; color: #427a30; font-weight: 700; }
-.harmony-page .checkout-interest-dialog h2 { margin: 0 0 12px; font-size: clamp(26px, 6vw, 34px); line-height: 1.12; letter-spacing: -.04em; }
-.harmony-page .checkout-interest-copy { margin: 0 0 22px; color: #60646c; font-size: 14px; line-height: 1.6; }
-.harmony-page .checkout-interest-dialog form { display: grid; gap: 10px; }
-.harmony-page .checkout-interest-dialog label { margin-top: 4px; color: #18372a; font-size: 13px; font-weight: 650; }
-.harmony-page .checkout-interest-dialog input { width: 100%; min-height: 50px; padding: 12px 14px; border: 1px solid #ccd4c8; border-radius: 10px; background: #fff; color: #18372a; font: inherit; font-size: 16px; }
-.harmony-page .checkout-interest-dialog input:focus { outline: 3px solid #47803255; border-color: #478032; }
-.harmony-page .checkout-interest-privacy { margin: 4px 0 10px; color: #60646c; font-size: 12px; line-height: 1.55; }
-.harmony-page .checkout-interest-dialog form > .sale-button { width: 100%; justify-content: center; }
-html:has(.checkout-interest-dialog[open]) { overflow: hidden; }
 @media (min-width: 761px) {
  .harmony-page .early-proof>div { padding-right: 140px; grid-template-columns: 220px 1fr; }
  .harmony-page .early-proof a { grid-column: 2; }
@@ -282,7 +266,6 @@ html:has(.checkout-interest-dialog[open]) { overflow: hidden; }
  .harmony-page .sale-footer { padding-bottom: calc(152px + env(safe-area-inset-bottom)); }
  .harmony-page main>section { scroll-margin-top: 76px; }
  .harmony-page .feedback-dialog-header { padding: 12px; }
- .harmony-page .checkout-interest-dialog { padding: 22px 18px; }
  .harmony-page .feedback-dialog-header h3 { font-size: 16px; }
  .harmony-page .feedback-dialog-content { padding: 12px; }
 }

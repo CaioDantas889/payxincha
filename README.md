@@ -3,7 +3,7 @@
 Landing de vendas em português com cadastro de CPF/CNPJ, acompanhamento individual e painel administrativo. Implementada em React/Vinext, hospedada em Sites, com banco D1.
 
 ## Conteúdo e operação
-- `app/landing.tsx` e `public/sales.css`: campanha 90% OFF, preço de R$ 99,00 por R$ 9,90 à vista, taxas, bandeiras e botões de compra. O formulário de contato é exibido antes de seguir ao checkout.
+- `app/landing.tsx` e `public/sales.css`: campanha 90% OFF, preço de R$ 99,00 por R$ 9,90 à vista, taxas, bandeiras e botões de compra. Sem formulário na landing.
 - `/checkout`: resumo do pedido e cadastro separado em três etapas. Envia ao mesmo banco e painel. Não processa pagamentos; contratação e frete são confirmados após análise.
 - `lib/sales-content.ts`: preços confirmados e depoimentos autorizados. A lista de depoimentos está vazia até o responsável fornecer relatos reais. Enquanto isso, a seção convida clientes a enviarem feedback pelo WhatsApp; publicação somente com autorização.
 - `components/product-motion.tsx`: animação leve do produto em CSS, com pausa e respeito a movimento reduzido; sem arquivo GIF pesado.
@@ -74,7 +74,7 @@ O SSH usa a chave já instalada para `root@72.60.51.248`, sem senhas no BAT. Sã
 Para validar apenas a sintaxe remota, sem pull ou deploy: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/deploy-paychinxa.ps1 -ValidateOnly`. A opção `-NoConfirm` permite execução previamente autorizada sem a pergunta interativa. O processo não faz commit ou push de alterações locais.
 
 ## Fluxo atual — checkout Cakto (13/11/2026)
-Todos os botões Comprar maquininha abrem um formulário de nome e telefone e, após o envio, seguem a https://pay.cakto.com.br/5wcrmvz_1306011 (constante em lib/checkout.ts). O formulário não envia nem armazena os dados; a pessoa informa os dados da compra e pagamento na Cakto. A antiga rota /checkout redireciona com HTTP 307 para a Cakto; links antigos /#cadastro seguem para a seção da oferta.
+Todos os botões Comprar maquininha levam diretamente a https://pay.cakto.com.br/5wcrmvz_1306011 (constante em lib/checkout.ts), sem formulário intermediário. A pessoa informa os dados da compra e pagamento na Cakto. A antiga rota /checkout redireciona com HTTP 307 para a Cakto; links antigos /#cadastro seguem para a seção da oferta.
 
 Removidos os acessos ao painel e acompanhamento da navegação da landing. A FAQ, as etapas de compra e o aviso de privacidade refletem o checkout externo. POST /api/solicitacoes retorna 410 sem ler ou gravar dados. Banco, painel autenticado e acompanhamento de registros históricos foram preservados para não perder pedidos antigos; as seções anteriores deste documento sobre cadastro interno descrevem esse legado, não o fluxo comercial atual. As compras da Cakto não entram nesse painel legado. Não foi criada integração de pedidos ou webhook.
 

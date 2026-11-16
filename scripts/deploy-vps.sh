@@ -67,9 +67,8 @@ const checkout = await fetch(origin + '/checkout', { redirect: 'manual', signal:
 assert.equal(checkout.status, 307, 'checkout antigo redireciona');
 assert.equal(checkout.headers.get('location'), checkoutUrl, 'destino Cakto');
 const landing = await (await fetch(origin, { signal: AbortSignal.timeout(20000) })).text();
-assert.ok(landing.includes('checkout-interest-dialog'), 'formulario de contato presente');
-assert.ok(landing.includes('Seu nome') && landing.includes('Seu telefone com DDD'), 'campos de contato presentes');
-assert.ok(landing.includes('Continuar para o checkout'), 'seguir para checkout');
+assert.ok(landing.includes('href="' + checkoutUrl + '"'), 'compra direta na Cakto');
+assert.ok(!landing.includes('checkout-interest-dialog'), 'sem formulario intermediario');
 assert.ok(!/href="\/(checkout|admin|acompanhar)"/.test(landing), 'landing sem fluxo interno');
 const retired = await fetch(origin + '/api/solicitacoes', { method: 'POST', body: '{}', signal: AbortSignal.timeout(20000) });
 assert.equal(retired.status, 410, 'cadastro interno encerrado');
