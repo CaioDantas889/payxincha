@@ -24,6 +24,8 @@
 .harmony-page .sale-sticker strong { font-size: 54px; }
 .harmony-page .sale-hero-description { font-size: 16px; margin-block: 20px 24px; }
 .harmony-page .purchase-destination, .harmony-page .sale-condition { font-size: 12px; line-height: 1.6; max-width: 420px; }
+.harmony-page .price-transparency, .harmony-page .seller-identification { margin: 5px 0 0; color: #46584b; font-size: 11px; line-height: 1.55; max-width: 440px; }
+.harmony-page .seller-identification { font-weight: 550; }
 .harmony-page .hero-rate-teaser a { font-size: 12px; min-height: 24px; }
 .harmony-page .sale-benefits { background: #fff; color: var(--sales-dark); border-bottom: 1px solid #e3e7df; }
 .harmony-page .sale-benefits > .sale-container { padding: 24px 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -80,6 +82,7 @@
 .harmony-page .sale-final p { font-size: 11px; }
 .harmony-page .sale-footer { padding-block: 48px 32px; }
 .harmony-page .sale-footer-top > div { font-size: 14px; }
+.harmony-page .seller-legal a { text-decoration: underline; text-underline-offset: 3px; }
 .harmony-page .sale-footer-top > div > span, .harmony-page .sale-footer-bottom, .harmony-page .sale-footer > details summary, .harmony-page .sale-footer > details p { font-size: 12px; line-height: 1.6; }
 @media (max-width: 1050px) {
   .harmony-page { --layout-gap: 40px; }
